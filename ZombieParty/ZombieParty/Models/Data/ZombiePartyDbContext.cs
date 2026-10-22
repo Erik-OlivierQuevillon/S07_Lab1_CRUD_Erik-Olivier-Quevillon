@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ZombieParty.Data;
 
 namespace ZombieParty.Models.Data
 {
@@ -8,6 +9,12 @@ namespace ZombieParty.Models.Data
         {
 
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //Générer des données de départ
+            modelBuilder.GenerateData();
+        }
+
         public DbSet<Zombie> Zombies { get; set; }
         public DbSet<ZombieType> ZombieTypes { get; set; }
         public DbSet<HuntingLog> HuntingLogs { get; set; }

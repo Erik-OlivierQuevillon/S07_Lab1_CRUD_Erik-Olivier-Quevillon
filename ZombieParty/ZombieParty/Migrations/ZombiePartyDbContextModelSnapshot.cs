@@ -17,10 +17,10 @@ namespace ZombieParty.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.16")
+                .HasAnnotation("ProductVersion", "8.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("HuntingLogZombie", b =>
                 {
@@ -43,7 +43,7 @@ namespace ZombieParty.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -66,7 +66,7 @@ namespace ZombieParty.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("WeaponId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("WeaponId"));
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
@@ -98,6 +98,44 @@ namespace ZombieParty.Migrations
                     b.HasKey("WeaponId");
 
                     b.ToTable("Weapons");
+
+                    b.HasData(
+                        new
+                        {
+                            WeaponId = 1,
+                            CreatedDate = new DateTime(1999, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "This is to cut your friendly zombies",
+                            Force = 200m,
+                            Image = "https://i.ibb.co/y5nCnXT/dagger-gfce31e967-1920.png",
+                            Name = "Leopold",
+                            Price = 421m,
+                            Qty = 21,
+                            QtyBought = 3
+                        },
+                        new
+                        {
+                            WeaponId = 2,
+                            CreatedDate = new DateTime(1999, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "An awesome Stainless Steel Shield",
+                            Force = 10m,
+                            Image = "https://publicdomainvectors.org/photos/Shield-ClassicMedieval1.png",
+                            Name = "Master Shield",
+                            Price = 500m,
+                            Qty = 30,
+                            QtyBought = 1
+                        },
+                        new
+                        {
+                            WeaponId = 3,
+                            CreatedDate = new DateTime(1999, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "The Throngler",
+                            Force = 15m,
+                            Image = "https://publicdomainvectors.org/photos/Shield-ClassicMedieval1.png",
+                            Name = "Throngler",
+                            Price = 600m,
+                            Qty = 30,
+                            QtyBought = 1
+                        });
                 });
 
             modelBuilder.Entity("ZombieParty.Models.Zombie", b =>
@@ -106,7 +144,7 @@ namespace ZombieParty.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -129,6 +167,144 @@ namespace ZombieParty.Migrations
                     b.HasIndex("ZombieTypeId");
 
                     b.ToTable("Zombies");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "LeChuck",
+                            Point = 5,
+                            ShortDesc = "Pirate des Caraibes",
+                            ZombieTypeId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Lenore",
+                            Point = 4,
+                            ShortDesc = "Cute Little Dead Girl",
+                            ZombieTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Baron Samedi",
+                            Point = 8,
+                            ShortDesc = "En costume de soirée, avec un chapeau haut de forme blanc et des lunettes soleil",
+                            ZombieTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Draugr",
+                            Point = 2,
+                            ShortDesc = "Vivant dans sa tombe grandant son trésor",
+                            ZombieTypeId = 3
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Ragamuffin ",
+                            Point = 5,
+                            ShortDesc = "Ancien vampire transformé en poupée de chiffon, ami de Lenore",
+                            ZombieTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Mr Gosh",
+                            Point = 6,
+                            ShortDesc = "Tête de sac avec yeux en boutons, amoureux de Lenore",
+                            ZombieTypeId = 1
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Taxidermy ",
+                            Point = 1,
+                            ShortDesc = "Tête de cerf empaillé, voisin de Lenore",
+                            ZombieTypeId = 3
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Kitty",
+                            Point = 3,
+                            ShortDesc = "Chat mort de Lenore",
+                            ZombieTypeId = 1
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "Singe zombie",
+                            Point = 2,
+                            ShortDesc = "Voleur très rapide",
+                            ZombieTypeId = 3
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "chien de l'enfer",
+                            Point = 7,
+                            ShortDesc = "chien très rapide, pouvant être enflammé",
+                            ZombieTypeId = 3
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Name = "Avogadro",
+                            Point = 9,
+                            ShortDesc = "Attaque avec des éclairs suite à un orage",
+                            ZombieTypeId = 3
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Name = "Lady Rose",
+                            Point = 6,
+                            ShortDesc = "",
+                            ZombieTypeId = 3
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Name = "Matbeth",
+                            Point = 2,
+                            ShortDesc = "Jeune étudiante qui cherche son professeur pour se venger",
+                            ZombieTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Name = "The Clown",
+                            Point = 5,
+                            ShortDesc = "Le clown malheureux qui court après les enfants",
+                            ZombieTypeId = 3
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Name = "Clicker",
+                            Point = 4,
+                            ShortDesc = "Le comptable mécontent qui cherche les failles",
+                            ZombieTypeId = 2
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Name = "TeamsZombie",
+                            Point = 10,
+                            ShortDesc = "L'étudiant happé par Teams. Trop d'heures de vidéos ont transformé cet étudiant en zombie",
+                            ZombieTypeId = 3
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Name = "Mathilde",
+                            Point = 4,
+                            ShortDesc = "La fêtarde du samedi soir qui cherche les fêtes et les bars en vogue",
+                            ZombieTypeId = 3
+                        });
                 });
 
             modelBuilder.Entity("ZombieParty.Models.ZombieType", b =>
@@ -137,7 +313,7 @@ namespace ZombieParty.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Point")
                         .HasColumnType("int");
@@ -150,6 +326,38 @@ namespace ZombieParty.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ZombieTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Point = 2,
+                            TypeName = "Contact"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Point = 3,
+                            TypeName = "Virus"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Point = 4,
+                            TypeName = "Chimique"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Point = 2,
+                            TypeName = "Morsure"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Point = 5,
+                            TypeName = "vampzombie"
+                        });
                 });
 
             modelBuilder.Entity("HuntingLogZombie", b =>
